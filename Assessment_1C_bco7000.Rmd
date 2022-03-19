@@ -177,13 +177,8 @@ PART 3. - DUE SESSION 8
 
 18. Identify variable(s) which should be factors and transform their type into a factor variable.
 
-- NEW DATA TYPES, TYPES OF VARIABLES, STRINGS AND DATES
-Converting some of our variables into factors (categories)
-Maria will show us in class
 
 ```{r}
-
-library(tidyverse)
 
 skim(fastfood)
 
@@ -197,17 +192,11 @@ skim(fastfood)
 
 19. Create two new variables:
 
-- use mutate and create two variables (one will be called calories_type - use mutate) - 
-
 Read about `cut_number()` function using Help and add a new variable to the dataset `calories_type`. Use `calories` variable for `cut_number()` function to split it into 3 categories `n=3`, add labels `labels=c("low", "med", "high")` and make the dataset ordered by arranging it according to calories. 
-
-put mutate - put name of new variable put = then put name of existing variable that you are going to cut into three variables, then use labels - this is very close to case_when
-Separate variables with commas.
 
 Do not forget to save the updated dataset. 
 
 ```{r}
-library(tidyverse)
 
 calories_type<-fastfood%>%
   mutate(
@@ -218,8 +207,6 @@ calories_type<-fastfood%>%
 ```
 
 20. Create a dataviz that shows the distribution of `calories_type` in food items for each type of restaurant. Think carefully about the choice of data viz. Use facets, coordinates and theme layers to make your data viz visually appealing and meaningful. Use factors related data viz functions.
-
-Calorie types will be a discrete variable, food items, each type of restaurant - (all discrete??) Three - use facets, coordinates, themes. 
 
 ```{r}
 
@@ -242,7 +229,6 @@ trans_fat_percent<-fastfood%>%mutate(trans_fat_percent=trans_fat/total_fat*100)
 
 22. Create a dataviz that shows the distribution of `trans_fat` in food items for each type of restaurant. Think carefully about the choice of data viz. Use facets, coordinates and theme layers to make your data viz visually appealing and meaningful.
 
-similar to 20 - but there is a catch - calories type is a discrete variable, but trans_fat is a continuous variable - so there will be different geoms
 
 ```{r}
 
@@ -252,7 +238,6 @@ calories_type%>%ggplot(aes(calories_type, trans_fat)) + geom_col() + theme_light
 
 23. Calculate and show the average (mean)  `total_fat` for each type of restaurant. No need to save it as a variable.
 
-for each type of restaurant - first group by restaurant and then summarise and create average (mean) total_fat.  
 
 ```{r}
 
@@ -263,7 +248,6 @@ fastfood%>%group_by(restaurant)%>%summarise(total_fat_mean=mean(total_fat, na.rm
 24. And create a dataviz that allow to compare different restaurants on this variable (`total_fat`). You can present it on one dataviz (= no facets). 
 Think carefully about the choice of data viz. Use coordinates and theme layers to make your data viz visually appealing and meaningful. 
 
-restaurants (discrete) and total fat (continuous) - which geom - quite simple (no need for facets or anything)
 
 ```{r}
 
